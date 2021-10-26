@@ -2,7 +2,7 @@
 const quotesTextElm = document.getElementById("quote");
 const quoteAuthorElm = document.getElementById("author");
 const newQuoteBtnElm = document.getElementById("new-quote");
-const twitterBtnElm = document.getElementsByClassName("twitter-button");
+const twitterBtnElm = document.querySelector(".twitter-button");
 
 
 
@@ -39,6 +39,17 @@ async function getQuotes() {
     // catching error
     }
 }
+
+// tweet quote
+
+function tweetQuote() {
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${quotesTextElm.textContent} - ${quoteAuthorElm.textContent}`;
+    window.open(twitterUrl, '_blank');
+}
+
+// event listener
+newQuoteBtnElm.addEventListener('click', newQuotes);
+twitterBtnElm.addEventListener('click', tweetQuote);
 
 // On load
 getQuotes();
